@@ -31,9 +31,8 @@ const MovieDetails = () => {
   // useEffect(() => {
   //   getMovieDetails(movieId).then(setDetails);
   // }, [movieId]);
-  const movie = !Object.keys(details).length === 0;
 
-  return movie ? (
+  return (
     <div>
       <BackBtn>
         <Link to={detailsLink}>Go back</Link>
@@ -70,8 +69,6 @@ const MovieDetails = () => {
         <Outlet />
       </AddWrapper>
     </div>
-  ) : (
-    <p>There is no film you search</p>
   );
 };
 export default MovieDetails;
