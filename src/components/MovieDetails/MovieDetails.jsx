@@ -8,14 +8,15 @@ import {
   AddWrapper,
   BackBtn,
 } from './MovieDetails.styled';
-import { NavLink, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const { movieId } = useParams();
   const [details, setDetails] = useState({});
   const location = useLocation();
+  console.log('🚀 ~ location', location);
   const detailsLink = location.state?.from ?? '/';
 
   useEffect(() => {
@@ -30,10 +31,12 @@ export const MovieDetails = () => {
   // useEffect(() => {
   //   getMovieDetails(movieId).then(setDetails);
   // }, [movieId]);
-  return (
+  const movie = !Object.keys(details).length === 0;
+
+  return movie ? (
     <div>
       <BackBtn>
-        <Link to="/">Go back</Link>
+        <Link to={detailsLink}>Go back</Link>
       </BackBtn>
       {Object.keys(details).length ? (
         <MovieDetailsWrapper>
@@ -67,5 +70,8 @@ export const MovieDetails = () => {
         <Outlet />
       </AddWrapper>
     </div>
+  ) : (
+    <p>There is no film you search</p>
   );
 };
+export default MovieDetails;

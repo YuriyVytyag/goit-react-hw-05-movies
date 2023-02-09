@@ -3,12 +3,13 @@ import { useState, useEffect } from 'react';
 import { getTrend } from 'components/helpers/Api';
 import { useLocation } from 'react-router-dom';
 
-export const Home = () => {
+const Home = () => {
   const [trend, setTrend] = useState([]);
   const location = useLocation();
   useEffect(() => {
     try {
       getTrend().then(res => {
+        console.log('🚀 ~ res', res);
         return setTrend(res.data.results);
       });
     } catch (error) {
@@ -30,3 +31,5 @@ export const Home = () => {
     </div>
   );
 };
+
+export default Home;

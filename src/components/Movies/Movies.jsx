@@ -6,7 +6,7 @@ import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { SearchBar } from 'components/SearchBar/SearchBar';
 
-export const Movies = () => {
+const Movies = () => {
   const [movies, setMovies] = useState('');
   const [value, setValue] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
@@ -52,3 +52,5 @@ export const Movies = () => {
     </MovieWrap>
   );
 };
+
+export default Movies;
